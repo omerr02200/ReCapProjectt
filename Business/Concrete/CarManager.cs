@@ -1,10 +1,13 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,15 +74,30 @@ namespace Business.Concrete
         //}//Result'tan önce
         public IResult Add(Car car)
         {
-            if (car.Description.Length > 1 && car.DailyPrice > 0)
-            {
-                _iCarDal.Add(car);
-                return new SuccessResult(Messages.CarAdded);
-            }
-            else
-            {
-                return new ErrorResult(Messages.InvalidName);
-            }
+            //if (car.Description.Length > 1 && car.DailyPrice > 0)
+            //{
+            //    _iCarDal.Add(car);
+            //    return new SuccessResult(Messages.CarAdded);
+            //}
+            //else
+            //{
+            //    return new ErrorResult(Messages.InvalidName);
+            //} //FluentValidation dan önce
+
+            //var context = new ValidationContext<Car>(car);
+            //CarValidator validator = new CarValidator();
+            //var result = validator.Validate(context);
+            //if(!result.IsValid)
+            //{
+            //    throw new ValidationException(result.Errors);
+            //} //FluentValidation dan sonra.
+
+            ValidationTool.Validate(new CarValidator(), car); //ValidationTool dan sonra.
+            //Validation, Cash, Log, Transaction, Authorization gibi CCC leri bu şekilde, metod içerisinde kullanmak karmaşıklığa sebep olacağından;
+            //metodun üzerinde bu işlemleri çağırabiliriz. Bu yöntem de AOP dir.
+
+            _iCarDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
 
         //public void Update(Car car)
