@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -72,6 +73,7 @@ namespace Business.Concrete
         //        Console.WriteLine("Lütfen en az iki karakterli bir isim ve sıfırdan büyük bir ücret giriniz");
         //    }
         //}//Result'tan önce
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
             //if (car.Description.Length > 1 && car.DailyPrice > 0)
@@ -92,7 +94,7 @@ namespace Business.Concrete
             //    throw new ValidationException(result.Errors);
             //} //FluentValidation dan sonra.
 
-            ValidationTool.Validate(new CarValidator(), car); //ValidationTool dan sonra.
+            // ValidationTool.Validate(new CarValidator(), car); //ValidationTool dan sonra. Aspect oluşturduktan sonra buraya gerek kalmadı.
             //Validation, Cash, Log, Transaction, Authorization gibi CCC leri bu şekilde, metod içerisinde kullanmak karmaşıklığa sebep olacağından;
             //metodun üzerinde bu işlemleri çağırabiliriz. Bu yöntem de AOP dir.
 
