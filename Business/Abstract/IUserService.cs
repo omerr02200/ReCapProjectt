@@ -1,12 +1,14 @@
 ﻿using Core.Utilities.Results;
-using Entities.Concrete;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IUserService:IEntityRepositoryService<User>
+    public interface IUserService : IEntityRepositoryService<User>
     {
+        IDataResult <List<OperationClaim>> GetClaims(User user);
+        IDataResult <User> GetByMail(string email);
     }
 }
