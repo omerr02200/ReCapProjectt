@@ -29,6 +29,6 @@ namespace Business.Abstract
         //List<CarDetailDto> GetCarDetails();
         IDataResult<List<CarDetailDto>> GetCarDetails();
 
-
+        IResult TransactionalOperation(Car car);
     }
 }

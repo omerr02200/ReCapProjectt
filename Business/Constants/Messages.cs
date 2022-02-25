@@ -57,5 +57,11 @@ namespace Business.Constants
         public static string UserAlreadyExists = "Bu kullanıcı zaten mevcut";
 
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu";
+
+        public static string BrandLimitExceded = "Marka sayı limiti aşıldı";
+
+        public static string CarCountOfBrandError = "Bu markada en fazla 5 araç ekleyebilirsiniz";
+
+        public static string CarNameAlreadyExists = "Bu isimde araç zaten var";
     }
 }

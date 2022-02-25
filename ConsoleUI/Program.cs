@@ -53,10 +53,6 @@ namespace ConsoleUI
             Console.ReadLine();
 
         }
-
-       
-
-
         private static void CarTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
@@ -117,7 +113,6 @@ namespace ConsoleUI
             }
             
         }
-
         private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
@@ -138,7 +133,6 @@ namespace ConsoleUI
                 //Console.WriteLine(car.BrandId);
             }
         }
-
         private static void ColorTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
@@ -163,7 +157,6 @@ namespace ConsoleUI
                 Console.WriteLine("ColorName= " + item.ColorName + ", ColorId= " + item.ColorId);
             }
         }
-
         private static void UserTest()
         {
             UserManager userManager = new UserManager(new EfUserDal());
@@ -173,7 +166,6 @@ namespace ConsoleUI
             //var result = userManager.Add(new User { FirstName = "V", LastName = "Öğüt", Email = "veli@ogut.com.tr", Password = "321" });
             //Console.WriteLine(result.Message);
         }
-
         private static void CustomerTest()
         {
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());

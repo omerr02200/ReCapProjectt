@@ -43,15 +43,15 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<User>(Messages.UserNotFound);
             }
-            if(!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.Data.PasswordHash, userToCheck.Data.PasswordSalt ))
+            if(!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt ))
             {
                 return new ErrorDataResult<User>(Messages.PasswordError);
             }
-            return new SuccessDataResult<User>(userToCheck.Data, Messages.SuccessfulLogin);
+            return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
         }
         public IResult UserExists(string email)
         {
-            if(_userService.GetByMail(email).Data!=null)
+            if(_userService.GetByMail(email)!=null)
             {
                 return new ErrorResult(Messages.UserAlreadyExists);
             }
