@@ -43,6 +43,8 @@ namespace Business.Constants
         public static string BrandsListed = "Markalar başarıyla listelendi";
 
         public static string CarImageAdded = "Araç resmi başarıyla eklendi";
+        public static string CarImageDeleted = "Araç resmi başarıyla silindi";
+        public static string CarImageUpdated = "Araç resmi başarıyla güncellendi";
 
         public static string AuthorizationDenied = "Yetkiniz yok";
 
@@ -63,5 +65,7 @@ namespace Business.Constants
         public static string CarCountOfBrandError = "Bu markada en fazla 5 araç ekleyebilirsiniz";
 
         public static string CarNameAlreadyExists = "Bu isimde araç zaten var";
+
+        
     }
 }
